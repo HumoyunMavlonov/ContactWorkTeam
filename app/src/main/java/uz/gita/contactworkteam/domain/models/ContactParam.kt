@@ -1,0 +1,1 @@
+package uz.gita.contactworkteam.domain.modelsdata class ContactParam(    val id: Int,    val firstName: String,    val lastName: String,    val phone: String,)
