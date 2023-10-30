@@ -1,16 +1,18 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "uz.gita.contactworkteam"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "uz.gita.contactworkteam"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -30,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -66,4 +68,61 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Room
+    val roomVersion = "2.5.2"
+    //noinspection GradleDependency
+    implementation("androidx.room:room-runtime:$roomVersion")
+    //noinspection GradleDependency
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    //noinspection KaptUsageInsteadOfKsp,GradleDependency
+    kapt("androidx.room:room-compiler:$roomVersion")
+    //noinspection GradleDependency
+    implementation("androidx.room:room-ktx:$roomVersion")
+
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //client
+    //noinspection GradleDependency
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    //noinspection GradleDependency
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+
+    debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
+
+    //voyager
+    val voyagerVersion = "1.0.0-rc05"
+    // Navigator
+    //noinspection GradleDependency
+    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+    // BottomSheetNavigator
+    //noinspection GradleDependency
+    implementation("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
+    // TabNavigator
+    //noinspection GradleDependency
+    implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
+    // Transitions
+    //noinspection GradleDependency
+    implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+    // Android
+    // Android ViewModel integration
+    //noinspection GradleDependency
+    implementation("cafe.adriel.voyager:voyager-androidx:$voyagerVersion")
+    // Hilt integration
+    //noinspection GradleDependency
+    implementation("cafe.adriel.voyager:voyager-hilt:$voyagerVersion")
+
+    // Hilt
+    val hiltVersion = ("2.44.2")
+    //noinspection GradleDependency
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    //noinspection GradleDependency
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    //LottieAnim
+    implementation("com.airbnb.android:lottie-compose:6.1.0")
+
 }
