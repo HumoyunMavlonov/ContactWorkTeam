@@ -16,10 +16,10 @@ interface ContactApi {
     suspend fun getAllContacts(): Response<ContactRepose>
 
     @POST("contact")
-    suspend fun addProduct(@Body contactRequest: ContactAddRequest): Response<ContactRepose>
+    suspend fun addContact(@Body contactRequest: ContactAddRequest): Response<ContactRepose>
 
     @PUT("contact")
-    suspend fun updateProduct(
+    suspend fun updateContact(
         @Body contactRequest: ContactEditRequest
     ): Response<ContactRepose>
 
