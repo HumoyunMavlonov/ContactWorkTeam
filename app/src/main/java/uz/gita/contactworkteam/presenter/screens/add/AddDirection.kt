@@ -1,0 +1,1 @@
+package uz.gita.contactworkteam.presenter.screens.addimport uz.gita.contactworkteam.navigator.AppNavigatorimport javax.inject.Injectclass AddDirection @Inject constructor(    private val appNavigator: AppNavigator,) : AddContract.AddDirection {    override suspend fun back() {        appNavigator.back()    }}
