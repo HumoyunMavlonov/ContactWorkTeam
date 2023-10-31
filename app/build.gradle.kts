@@ -138,4 +138,11 @@ dependencies {
 
     //compose permission
     implementation ("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
+
+    // Hilt worker
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    // When using Kotlin.
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    // When using Java.
+    annotationProcessor("androidx.hilt:hilt-compiler:1.0.0")
 }

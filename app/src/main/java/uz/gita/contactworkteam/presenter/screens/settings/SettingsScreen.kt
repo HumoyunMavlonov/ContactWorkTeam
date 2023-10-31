@@ -29,11 +29,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import cafe.adriel.voyager.androidx.AndroidScreen
 import cafe.adriel.voyager.hilt.getViewModel
 import uz.gita.contactworkteam.ui.theme.ContactWorkTeamTheme
+import uz.gita.contactworkteam.utils.myTimber
 import uz.gita.contactworkteam.utils.service.ContactWorker
 import java.util.concurrent.TimeUnit
 
@@ -63,7 +65,7 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
             OutlinedTextField(
                 value = hour,
                 onValueChange = {
-                        hour = it
+                    hour = it
                 },
                 modifier = Modifier
                     .padding(horizontal = 25.dp, vertical = 10.dp)
@@ -87,7 +89,12 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
                             hour.toInt().toLong(),
                             TimeUnit.MINUTES
                         ).build()
-                    WorkManager.getInstance(context).enqueue(periodicBuilder)
+                    myTimber("minutes $hour")
+                    val oneTimeBuilder = OneTimeWorkRequestBuilder<ContactWorker>().setInitialDelay(
+                        hour.toInt().toLong(), TimeUnit.SECONDS
+                    ).build()
+                    myTimber("one time builder:$oneTimeBuilder")
+                    WorkManager.getInstance(context).enqueue(oneTimeBuilder)
                     onDispatcher.invoke(SettingContract.Intent.Back)
                     Toast.makeText(
                         context,

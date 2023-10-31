@@ -1,1 +1,1 @@
-package uz.gita.contactworkteam.utilsobject Constants {    const val BASE_URL = "https://bb2d-195-158-16-140.ngrok-free.app/api/v1/" // might be not working}
+package uz.gita.contactworkteam.utilsobject Constants {    const val BASE_URL = "https://3c6a-195-158-16-140.ngrok-free.app/api/v1/" // might be not working}
