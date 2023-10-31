@@ -14,6 +14,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import cafe.adriel.voyager.androidx.AndroidScreen
@@ -52,6 +54,12 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
     val maxHour = 24
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.align(Alignment.Center)) {
+            Text(
+                text = "Please input less than 24 hours!",
+                fontSize = 18.sp,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+            Spacer(modifier = Modifier.size(15.dp))
             OutlinedTextField(
                 value = hour,
                 onValueChange = {
@@ -63,8 +71,8 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
                     .fillMaxWidth()
                     .height(56.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color(0xFFEBEDF0),
-                    unfocusedBorderColor = Color(0xFFEBEDF0),
+                    focusedBorderColor = Color(0xFF0A459C),
+                    unfocusedBorderColor = Color(0xFF7397CE),
                     cursorColor = Color(0xFF080809),
                 ),
                 singleLine = true,
@@ -91,8 +99,10 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
                     .fillMaxWidth()
                     .height(56.dp)
             ) {
-
-
+                Text(
+                    text = "Set time",
+                    fontSize = 22.sp,
+                )
             }
 
         }
