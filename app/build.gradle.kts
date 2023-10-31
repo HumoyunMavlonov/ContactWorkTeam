@@ -69,6 +69,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+
+    val work_version = "2.8.1"
+
+    // Kotlin + coroutines
+    implementation("androidx.work:work-runtime-ktx:$work_version")
     // Room
     val roomVersion = "2.5.2"
     //noinspection GradleDependency
@@ -128,12 +133,9 @@ dependencies {
     // WorkManager
     implementation("androidx.work:work-runtime:2.8.1")
 
-    // Better Logging In Android Using Timber
+//    // Better Logging In Android Using Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
 
     //compose permission
     implementation ("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
-
-
-
 }
