@@ -126,7 +126,7 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:6.1.0")
 
     // WorkManager
-    implementation("androidx.work:work-runtime:2.7.0")
+    implementation("androidx.work:work-runtime:2.8.1")
 
     // Better Logging In Android Using Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
