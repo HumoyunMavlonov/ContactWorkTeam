@@ -13,10 +13,10 @@ import uz.gita.contactworkteam.data.source.remote.response.ContactResponse
 
 interface ContactApi {
     @GET("contact")
-    suspend fun getAllContacts(): Response<ContactResponse>
+    suspend fun getAllContacts(): Response<List<ContactResponse>>
 
     @POST("contact")
-    suspend fun addContact(@Body contactRequest: ContactAddRequest): Response<ContactResponse>
+    suspend fun addContact(@Body contactRequest: ContactAddRequest): Response<String>
 
     @PUT("contact")
     suspend fun updateContact(

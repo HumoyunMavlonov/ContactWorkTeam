@@ -51,11 +51,11 @@ class SettingsScreen : AndroidScreen() {
 @Composable
 fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> Unit) {
     var hour by remember { mutableStateOf("") }
-    val maxHour = 24
+    val minMinute = 15
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.align(Alignment.Center)) {
             Text(
-                text = "Please input less than 24 hours!",
+                text = "Please input more than 15 minutes!",
                 fontSize = 18.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
@@ -63,7 +63,6 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
             OutlinedTextField(
                 value = hour,
                 onValueChange = {
-                    if (it.toInt() <= maxHour || it == "")
                         hour = it
                 },
                 modifier = Modifier
@@ -77,7 +76,7 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
                 ),
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                placeholder = { "Hours" }
+                placeholder = { Text(text = "Minutes") }
             )
             Spacer(modifier = Modifier.size(20.dp))
 
@@ -86,11 +85,16 @@ fun SettingContent(context: Context, onDispatcher: (SettingContract.Intent) -> U
                     val periodicBuilder =
                         PeriodicWorkRequestBuilder<ContactWorker>(
                             hour.toInt().toLong(),
-                            TimeUnit.HOURS
+                            TimeUnit.MINUTES
                         ).build()
                     WorkManager.getInstance(context).enqueue(periodicBuilder)
                     onDispatcher.invoke(SettingContract.Intent.Back)
-                    Toast.makeText(context, "check the list after $hour", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "check the list after $hour minutes",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
 
 
                 },

@@ -5,8 +5,6 @@ import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.gita.contactworkteam.data.repository.AppRepository
 import uz.gita.contactworkteam.utils.myTimber
@@ -19,16 +17,15 @@ class ContactWorker @Inject constructor(
 ) :
     Worker(context, workerParameters) {
     private val notificationHelper by lazy { NotificationHelper(context) }
-    val scope = MainScope()
+    private val scope = MainScope()
 
     @SuppressLint("MissingPermission")
     override fun doWork(): Result {
         myTimber("do work")
-        scope.launch {
-            repository.getAllContacts().onEach { }.launchIn(scope)
-        }
         notificationHelper.notificationManagerCompat.notify(1, notificationHelper.getNotification())
-
+        scope.launch {
+            repository.insertAllContactsToAPi()
+        }
         return Result.success()
     }
 }
