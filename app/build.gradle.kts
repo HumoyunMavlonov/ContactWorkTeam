@@ -84,7 +84,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    //client
+    // Client
     //noinspection GradleDependency
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     //noinspection GradleDependency
@@ -93,7 +93,7 @@ dependencies {
     debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 
-    //voyager
+    // Voyager
     val voyagerVersion = "1.0.0-rc05"
     // Navigator
     //noinspection GradleDependency
@@ -122,7 +122,10 @@ dependencies {
     //noinspection GradleDependency
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
-    //LottieAnim
+    // LottieAnim
     implementation("com.airbnb.android:lottie-compose:6.1.0")
+
+    // WorkManager
+    implementation("androidx.work:work-runtime:2.7.0")
 
 }
