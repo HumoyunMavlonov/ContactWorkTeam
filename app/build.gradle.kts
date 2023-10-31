@@ -128,4 +128,12 @@ dependencies {
     // WorkManager
     implementation("androidx.work:work-runtime:2.7.0")
 
+    // Better Logging In Android Using Timber
+    implementation("com.jakewharton.timber:timber:5.0.1")
+
+    //compose permission
+    implementation ("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
+
+
+
 }

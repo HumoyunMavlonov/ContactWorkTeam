@@ -9,20 +9,20 @@ import retrofit2.http.PUT
 import retrofit2.http.Query
 import uz.gita.contactworkteam.data.source.remote.request.ContactAddRequest
 import uz.gita.contactworkteam.data.source.remote.request.ContactEditRequest
-import uz.gita.contactworkteam.data.source.remote.response.ContactRepose
+import uz.gita.contactworkteam.data.source.remote.response.ContactResponse
 
 interface ContactApi {
     @GET("contact")
-    suspend fun getAllContacts(): Response<ContactRepose>
+    suspend fun getAllContacts(): Response<ContactResponse>
 
     @POST("contact")
-    suspend fun addContact(@Body contactRequest: ContactAddRequest): Response<ContactRepose>
+    suspend fun addContact(@Body contactRequest: ContactAddRequest): Response<ContactResponse>
 
     @PUT("contact")
     suspend fun updateContact(
         @Body contactRequest: ContactEditRequest
-    ): Response<ContactRepose>
+    ): Response<ContactResponse>
 
     @DELETE("contact")
-    suspend fun deleteContact(@Query("id") id: Int): Response<ContactRepose>
+    suspend fun deleteContact(@Query("id") id: Int): Response<ContactResponse>
 }
